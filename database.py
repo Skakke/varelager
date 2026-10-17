@@ -46,15 +46,17 @@ def add_categories():
     conn.commit()
     conn.close()
 
-def legg_til_ny_vare(navn, kategori, kort_beskrivelse):
-    # Oppretter en tilkobling til SQLite-databasen.
+def legg_til_ny_vare(navn, kategori, antall_paa_lager, kort_beskrivelse):
     conn = sqlite3.connect(DB_FILE)
-    cursor = conn.cursor();
-    cursor.execute("""
-    INSERT INTO varer (varenavn, kategori, kort_beskrivelse) 
-    VALUES (?, ?, ?)
-    """, (navn, kategori, kort_beskrivelse))
-
-    conn.commit()
-    conn.close()
+    try:
+        cursor = conn.execute("""
+            INSERT INTO varer (
+                varenavn, kategori, antall_paa_lager, kort_beskrivelse
+            )
+            VALUES (?, ?, ?, ?)
+        """, (navn, kategori, antall_paa_lager, kort_beskrivelse))
+        conn.commit()
+        return cursor.rowcount == 1
+    finally:
+        conn.close()
 

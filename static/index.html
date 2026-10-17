@@ -1,3 +1,42 @@
-<!-- Inventory page. -->
-
-Random stuffs
+<!doctype html>
+<html lang="no">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#f4f5ef">
+		<title>Varelager | Legg til vare</title>
+		<link rel="stylesheet" href="/static/style.css">
+		<script src="/static/script.js" defer></script>
+	</head>
+	<body>
+		<main class="page-shell">
+			<section class="add-section" aria-labelledby="add-title">				
+					<div>
+						<p class="eyebrow">NY REGISTRERING</p>
+						<h2 id="add-title">Legg til vare</h2>
+					</div>
+				<form id="add-form">
+					<label class="form-field name-field">
+						<span>Navn</span>
+						<input name="name" type="text" placeholder="F.eks. Skrivebordslampe" maxlength="80" required="">
+					</label>
+					<label class="form-field">
+						<span>Kategori</span>
+						<select name="category" required="">
+							<option value="Elektronikk">Elektronikk</option>
+							<option value="Klær">Klær</option>
+							<option value="Mat">Mat</option>
+							<option value="Møbler">Møbler</option>
+						</select>
+					</label>
+					<label class="form-field quantity-field">
+						<span>Antall</span>
+						<input name="quantity" type="number" min="0" max="99999" value="1" required="">
+					</label>
+					<label class="form-field description-field">
+						<span>Beskrivelse</span>
+						<input name="description" type="text" placeholder="Valgfri beskrivelse" maxlength="160">
+					</label>
+					<button class="submit-button" type="submit">Legg til vare <span aria-hidden="true">+</span></button>
+				</form>
+			</section>
