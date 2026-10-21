@@ -18,11 +18,11 @@
 				<form id="add-form">
 					<label class="form-field name-field">
 						<span>Navn</span>
-						<input name="name" type="text" placeholder="F.eks. Skrivebordslampe" maxlength="80" required="">
+						<input id="varenavn" name="name" type="text" placeholder="F.eks. Skrivebordslampe" maxlength="80" required="">
 					</label>
 					<label class="form-field">
 						<span>Kategori</span>
-						<select name="category" required="">
+						<select id="varekategori" name="category" required="">
 							<option value="Elektronikk">Elektronikk</option>
 							<option value="Klær">Klær</option>
 							<option value="Mat">Mat</option>
@@ -31,12 +31,26 @@
 					</label>
 					<label class="form-field quantity-field">
 						<span>Antall</span>
-						<input name="quantity" type="number" min="0" max="99999" value="1" required="">
+						<input id="antall_paa_lager" name="quantity" type="number" min="0" max="99999" value="1" required="">
 					</label>
 					<label class="form-field description-field">
 						<span>Beskrivelse</span>
-						<input name="description" type="text" placeholder="Valgfri beskrivelse" maxlength="160">
+						<input id="kort_beskrivelse" name="description" type="text" placeholder="Valgfri beskrivelse" maxlength="160">
 					</label>
 					<button class="submit-button" type="submit">Legg til vare <span aria-hidden="true">+</span></button>
+				</form>
+			</section>
+
+			<section class="add-section" aria-labelledby="kategori-title">
+					<div>
+						<p class="eyebrow">NY KATEGORI</p>
+						<h2 id="kategori-title">Legg til kategori</h2>
+					</div>
+				<form id="legg-til-ny-kategori-form">
+					<label class="form-field name-field">
+						<span>Kategorinavn</span>
+						<input id="kategorinavn" name="navn" type="text" placeholder="F.eks. Kontorutstyr" maxlength="80" required>
+					</label>
+					<button class="submit-button" type="submit">Legg til kategori <span aria-hidden="true">+</span></button>
 				</form>
 			</section>
