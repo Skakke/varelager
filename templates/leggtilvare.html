@@ -1,16 +1,9 @@
-<!doctype html>
-<html lang="no">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="theme-color" content="#f4f5ef">
-		<title>Varelager | Legg til vare</title>
-		<link rel="stylesheet" href="/static/style.css">
-		<script src="/static/script.js" defer></script>
-	</head>
-	<body>
-		<main class="page-shell">
-			<section class="add-section" aria-labelledby="add-title">				
+
+<!-- templates/leggtilvare.html -->
+{% extends "base.html" %}
+
+{% block content %} 
+<section class="add-section" aria-labelledby="add-title">				
 					<div>
 						<p class="eyebrow">NY REGISTRERING</p>
 						<h2 id="add-title">Legg til vare</h2>
@@ -40,17 +33,4 @@
 					<button class="submit-button" type="submit">Legg til vare <span aria-hidden="true">+</span></button>
 				</form>
 			</section>
-
-			<section class="add-section" aria-labelledby="kategori-title">
-					<div>
-						<p class="eyebrow">NY KATEGORI</p>
-						<h2 id="kategori-title">Legg til kategori</h2>
-					</div>
-				<form id="legg-til-ny-kategori-form">
-					<label class="form-field name-field">
-						<span>Kategorinavn</span>
-						<input id="kategorinavn" name="navn" type="text" placeholder="F.eks. Kontorutstyr" maxlength="80" required>
-					</label>
-					<button class="submit-button" type="submit">Legg til kategori <span aria-hidden="true">+</span></button>
-				</form>
-			</section>
+{% endblock %}

@@ -66,6 +66,10 @@ button { cursor: pointer; }
 .date-label { color: #a9c1b2; }
 
 .page-shell { width: min(1180px, calc(100% - 56px)); margin: 0 auto; }
+.welcome-section { max-width: 720px; margin: 76px auto 0; }
+.welcome-section h1 { max-width: 620px; }
+.welcome-section .page-subtitle { margin-bottom: 24px; }
+.welcome-action { display: inline-flex; align-items: center; text-decoration: none; }
 .page-heading { display: flex; justify-content: space-between; align-items: end; padding: 44px 0 26px; }
 .eyebrow { margin: 0 0 9px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: 1.25px; }
 .eyebrow span { padding: 0 5px; color: #aeb7ae; }

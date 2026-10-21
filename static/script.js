@@ -1,5 +1,6 @@
 const addForm = document.querySelector("#add-form");
 
+if (addForm) {
 const statusMessage = document.createElement("p");
 statusMessage.setAttribute("role", "status");
 addForm.after(statusMessage);
@@ -28,3 +29,4 @@ addForm.addEventListener("submit", async (event) => {
 		statusMessage.textContent = "Kunne ikke kontakte serveren.";
 	}
 });
+}

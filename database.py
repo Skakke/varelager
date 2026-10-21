@@ -30,18 +30,13 @@ def create_tables():
     conn.close()
 
 # Legger til kategorier i databasen, kjøres fra et setupvindu eller lignende.
-def add_categories():
+def legg_til_ny_kategori(navn):
     # Oppretter en tilkobling til SQLite-databasen.
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     cursor.execute("""
-    INSERT INTO kategorier (id,navn) VALUES (?, ?)
-    """, [
-        (1, 'Elektronikk'),
-        (2, 'Klær'),
-        (3, 'Mat'),
-        (4, 'Møbler')
-    ])
+    INSERT INTO kategorier (navn) VALUES (?)
+    """, [navn])
 
     conn.commit()
     conn.close()
