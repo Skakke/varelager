@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="add-section" aria-labelledby="list-title">
+					<div>
+						<p class="eyebrow">OVERSIKT</p>
+						<h2 id="list-title">Varer</h2>
+					</div>
+				<div>
+					<!-- Vanlig GET-skjema: sender ?sok=... til /varer -->
+					<form id="list-search-form" action="/varer">
+						<label class="form-field name-field">
+							<span>Søk på varenummer eller navn</span>
+							<input name="sok" type="search" value="{{ sok }}" placeholder="Tomt søk viser alle varer">
+						</label>
+						<button class="submit-button" type="submit">Søk</button>
+					</form>
+					<table class="vare-table">
+						<tr>
+							<th>Nr.</th>
+							<th>Navn</th>
+							<th>Kategori</th>
+							<th>Antall</th>
+							<th>Beskrivelse</th>
+						</tr>
+						{% for vare in varer %}
+						<tr>
+							<td>{{ vare.id }}</td>
+							<td>{{ vare.varenavn }}</td>
+							<td>{{ vare.kategori }}</td>
+							<td>{{ vare.antall_paa_lager }}</td>
+							<td>{{ vare.kort_beskrivelse }}</td>
+						</tr>
+						{% else %}
+						<tr><td colspan="5">Fant ingen varer.</td></tr>
+						{% endfor %}
+					</table>
+				</div>
+			</section>
+{% endblock %}

@@ -78,19 +78,24 @@ h2 { margin-bottom: 0; font-family: Georgia, "Times New Roman", serif; font-size
 .form-field select { padding: 0 10px; }
 
 .add-section { display: grid; grid-template-columns: 190px 1fr; gap: 25px; align-items: start; margin-top: 28px; padding: 20px 22px; border: 1px solid #dfe5dc; border-radius: 6px; background: #edf1e9; }
-#add-form { display: grid; grid-template-columns: 1.3fr 1fr 90px 1.2fr auto; gap: 10px; align-items: end; }
+#add-vare-form { display: grid; grid-template-columns: 1.3fr 1fr 90px 1.2fr auto; gap: 10px; align-items: end; }
+#add-kategori-form { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: end; }
 .form-field { display: grid; gap: 6px; min-width: 0; }
 .form-field > span { color: #566158; font-size: 11px; font-weight: 600; }
 .form-field input, .form-field select { height: 36px; padding: 0 9px; font-size: 12px; }
 .submit-button { height: 36px; border: 0; border-radius: 4px; padding: 0 12px; background: var(--green); color: #fff; font-size: 12px; white-space: nowrap; }
 .submit-button:hover { background: var(--green-dark); }
 .submit-button span { padding-left: 6px; color: var(--lime); font-size: 16px; }
+#list-search-form { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: end; margin-bottom: 16px; }
+.vare-table { width: 100%; border-collapse: collapse; background: var(--paper); border: 1px solid var(--line); border-radius: 4px; font-size: 12px; }
+.vare-table th, .vare-table td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; }
 .storage-note { margin: 11px 0 36px; color: #8a958b; font-size: 11px; text-align: right; }
 
 @media (max-width: 900px) {
-	#add-form { grid-template-columns: 1fr 1fr 90px; }
+	#add-vare-form { grid-template-columns: 1fr 1fr 90px; }
 	.description-field { grid-column: span 2; }
 	.submit-button { grid-column: 3; }
+	#add-kategori-form .submit-button { grid-column: 2; }
 	.add-section { grid-template-columns: 1fr; gap: 18px; }
 }
 
@@ -100,9 +105,10 @@ h2 { margin-bottom: 0; font-family: Georgia, "Times New Roman", serif; font-size
 	h1 { font-size: 32px; }
 	.page-subtitle { max-width: 220px; font-size: 12px; }
 	.add-section { margin-top: 23px; padding: 17px 14px; }
-	#add-form { grid-template-columns: 1fr 1fr; }
+	#add-vare-form { grid-template-columns: 1fr 1fr; }
 	.name-field, .description-field { grid-column: span 2; }
 	.quantity-field { grid-column: 1; }
 	.submit-button { grid-column: 2; align-self: end; }
 	.storage-note { text-align: left; }
+	#add-kategori-form { grid-template-columns: 1fr 1fr; }
 }

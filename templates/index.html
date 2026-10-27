@@ -1,12 +1,12 @@
 {% extends "base.html" %}
-
 {% block content %}
 <section class="welcome-section" aria-labelledby="welcome-title">
 	<p class="eyebrow">VARELAGER</p>
 	<h1 id="welcome-title">Velkommen til varelageret</h1>
 	<p class="page-subtitle">Hold oversikt over varene dine og registrer nye varer.</p>
-	<a class="submit-button welcome-action" href="/leggtilvare">
-		Legg til vare <span aria-hidden="true">+</span>
-	</a>
+	<a class="submit-button welcome-action" href="/nyvare">Legg til vare</a>
+	<a class="submit-button welcome-action" href="/nykategori">Legg til kategori</a>
+	<a class="submit-button welcome-action" href="/varer">Varer</a>
+	<a class="submit-button welcome-action" href="/endrevare">Endre vare</a>
 </section>
 {% endblock %}
