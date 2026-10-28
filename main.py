@@ -70,6 +70,14 @@ def leggtilkategori(request: Request):
         context={},
     )
 
+@app.get("/vareutinn")
+def vareutinn(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="vareutinn.html",
+        context={},
+    )
+
 
 @app.post("/api/nyvare", status_code=201)
 def add_vare(vare: Vare):
