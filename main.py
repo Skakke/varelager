@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-from database import legg_til_ny_vare, legg_til_ny_kategori, create_tables, oppdater_vare, sok_varer, hent_kategorier
+from database import legg_til_ny_vare, legg_til_ny_kategori, create_tables, oppdater_vare, sok_varer, hent_kategorier, slett_vare
 from fastapi import HTTPException
 import sqlite3
 from pydantic import BaseModel
@@ -28,6 +28,9 @@ class Vare(BaseModel):
 
 class Kategori(BaseModel):
     navn: str
+
+class DeleteVareRequest(BaseModel):
+    id: int
 
 @app.get("/")
 def index(request: Request):
@@ -123,6 +126,22 @@ def add_kategori(kategori: Kategori):
 @app.get("/api/varer")
 def search_varer(sok: str = ""):
     return sok_varer(sok.strip())
+
+@app.post("/api/varer")
+def slett_vare_api(payload: DeleteVareRequest):
+    try: 
+        slettet = slett_vare(payload.id)
+        if not slettet:
+            raise HTTPException(status_code=404, detail="Fant ikke varen.")
+        
+    except sqlite3.Error as error:
+            raise HTTPException(
+                status_code=500,
+                detail="Kunne ikke oppdatere varen.",
+            ) from error
+
+    return {"success": True, "message": "Vare slettet."}
+
 
 @app.put("/api/varer/{vare_id}")
 def update_vare(vare_id: int, vare: Vare):

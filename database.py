@@ -99,3 +99,12 @@ def hent_kategorier():
         return [dict(row) for row in rows]
     finally:
         conn.close()
+
+def slett_vare(id):
+    conn = sqlite3.connect(DB_FILE)
+    try:
+        cursor = conn.execute("DELETE FROM varer WHERE id = ?", [id])
+        conn.commit()
+        return cursor.rowcount == 1
+    finally:
+        conn.close()

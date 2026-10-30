@@ -1,42 +1,48 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <section class="add-section" aria-labelledby="edit-title">
-					<div>
-						<p class="eyebrow">REDIGERING</p>
-						<h2 id="edit-title">Endre vare</h2>
-					</div>
-				<form id="search-vare-form">
-					<label class="form-field name-field">
-						<span>Søk på varenummer eller navn</span>
-						<input name="sok" type="search" placeholder="F.eks. 12 eller lampe" required="">
-					</label>
-					<button class="submit-button" type="submit">Søk</button>
-				</form>
-				<ul id="search-results"></ul>
-				<form id="edit-vare-form">
-					<input name="id" type="hidden">
-					<label class="form-field name-field">
-						<span>Navn</span>
-						<input name="name" type="text" maxlength="80" required="">
-					</label>
-					<label class="form-field">
-						<span>Kategori</span>
-						<select id="varekategori" name="category" required="">
-    						{% for kategori in kategorier %}
-    						<option value="{{ kategori.navn }}">{{ kategori.navn }}</option>
-    						{% endfor %}
-						</select>
-					</label>
-					<label class="form-field quantity-field">
-						<span>Antall</span>
-						<input name="quantity" type="number" min="0" max="99999" required="">
-					</label>
-					<label class="form-field description-field">
-						<span>Beskrivelse</span>
-						<input name="description" type="text" maxlength="160">
-					</label>
-					<button class="submit-button" type="submit">Lagre endringer</button>
-				</form>
-			</section>
+  <div>
+    <p class="eyebrow">REDIGERING</p>
+    <h2 id="edit-title">Endre vare</h2>
+  </div>
+  <form id="search-vare-form">
+    <label class="form-field name-field">
+      <span>Søk på varenummer eller navn</span>
+      <input
+        name="sok"
+        type="search"
+        placeholder="F.eks. 12 eller lampe"
+        required=""
+      />
+    </label>
+    <button class="submit-button" type="submit">Søk</button>
+  </form>
+  <ul id="search-results"></ul>
+  <form id="edit-vare-form">
+    <input name="id" type="hidden" />
+    <label class="form-field name-field">
+      <span>Navn</span>
+      <input name="name" type="text" maxlength="80" required="" />
+    </label>
+    <label class="form-field">
+      <span>Kategori</span>
+      <select id="varekategori" name="category" required="">
+        {% for kategori in kategorier %}
+        <option value="{{ kategori.navn }}">{{ kategori.navn }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label class="form-field quantity-field">
+      <span>Antall</span>
+      <input name="quantity" type="number" min="0" max="99999" required="" />
+    </label>
+    <label class="form-field description-field">
+      <span>Beskrivelse</span>
+      <input name="description" type="text" maxlength="160" />
+    </label>
+    <div class="edit-actions">
+      <button class="submit-button" type="submit">Lagre endringer</button>
+      <button type="button" class="slett-vare-knapp">Slett vare</button>
+    </div>
+  </form>
+</section>
 {% endblock %}
