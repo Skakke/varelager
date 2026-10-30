@@ -29,7 +29,7 @@ def create_tables():
     conn.commit()
     conn.close()
 
-# Legger til kategorier i databasen, kjøres fra et setupvindu eller lignende.
+# Legger til kategori i databasen
 def legg_til_ny_kategori(navn):
     # Oppretter en tilkobling til SQLite-databasen.
     conn = sqlite3.connect(DB_FILE)
@@ -44,7 +44,7 @@ def legg_til_ny_kategori(navn):
     finally:
         conn.close()
     
-
+# Legger til vare i databasen
 def legg_til_ny_vare(navn, kategori, antall_paa_lager, kort_beskrivelse):
     conn = sqlite3.connect(DB_FILE)
     try:
@@ -90,7 +90,7 @@ def sok_varer(sokeord):
     finally:
         conn.close()
 
-    # Henter alle kategorier, sortert på navn.
+# Henter alle kategorier, sortert på navn.
 def hent_kategorier():
     conn = sqlite3.connect(DB_FILE)
     conn.row_factory = sqlite3.Row
@@ -100,6 +100,7 @@ def hent_kategorier():
     finally:
         conn.close()
 
+# Sletter en vare fra databasen. Returnerer False hvis varen ikke finnes.
 def slett_vare(id):
     conn = sqlite3.connect(DB_FILE)
     try:

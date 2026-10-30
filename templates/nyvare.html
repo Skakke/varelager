@@ -1,35 +1,56 @@
-
 <!-- templates/leggtilvare.html -->
-{% extends "base.html" %}
-
-{% block content %} 
-<section class="add-section" aria-labelledby="add-title">				
-					<div>
-						<p class="eyebrow">NY REGISTRERING</p>
-						<h2 id="add-title">Legg til vare</h2>
-					</div>
-				<form id="add-vare-form">
-					<label class="form-field name-field">
-						<span>Navn</span>
-						<input id="varenavn" name="name" type="text" placeholder="F.eks. Skrivebordslampe" maxlength="80" required="">
-					</label>
-					<label class="form-field">
-						<span>Kategori</span>
-						<select id="varekategori" name="category" required="">
-    						{% for kategori in kategorier %}
-    						<option value="{{ kategori.navn }}">{{ kategori.navn }}</option>
-    						{% endfor %}
-						</select>
-					</label>
-					<label class="form-field quantity-field">
-						<span>Antall</span>
-						<input id="antall_paa_lager" name="quantity" type="number" min="0" max="99999" value="1" required="">
-					</label>
-					<label class="form-field description-field">
-						<span>Beskrivelse</span>
-						<input id="kort_beskrivelse" name="description" type="text" placeholder="Beskrivelse" maxlength="160">
-					</label>
-					<button class="submit-button" type="submit">Legg til vare <span aria-hidden="true">+</span></button>
-				</form>
-			</section>
+{% extends "base.html" %} {% block title %}Legg til vare – {% endblock %} {%
+block content %}
+<section class="add-section" aria-labelledby="add-title">
+  <div>
+    <p class="eyebrow">NY REGISTRERING</p>
+    <h2 id="add-title">Legg til vare</h2>
+  </div>
+  <form id="add-vare-form">
+    <label class="form-field name-field">
+      <span>Navn</span>
+      <input
+        id="varenavn"
+        name="name"
+        type="text"
+        placeholder="F.eks. Skrivebordslampe"
+        maxlength="80"
+        required=""
+      />
+    </label>
+    <label class="form-field">
+      <span>Kategori</span>
+      <select id="varekategori" name="category" required="">
+        {% for kategori in kategorier %}
+        <option value="{{ kategori.navn }}">{{ kategori.navn }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label class="form-field quantity-field">
+      <span>Antall</span>
+      <input
+        id="antall_paa_lager"
+        name="quantity"
+        type="number"
+        min="0"
+        max="99999"
+        value="1"
+        required=""
+      />
+    </label>
+    <label class="form-field description-field">
+      <span>Beskrivelse</span>
+      <input
+        id="kort_beskrivelse"
+        name="description"
+        type="text"
+        placeholder="Beskrivelse"
+        maxlength="160"
+      />
+    </label>
+    <button class="submit-button" type="submit">
+      Legg til vare <span aria-hidden="true">+</span>
+    </button>
+  </form>
+</section>
 {% endblock %}

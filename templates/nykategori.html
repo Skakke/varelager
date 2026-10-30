@@ -1,17 +1,21 @@
-{% extends "base.html" %}
-
-{% block content %} 
-<section class="add-section" aria-labelledby="add-title">				
-					<div>
-						<p class="eyebrow">NY REGISTRERING</p>
-						<h2 id="add-title">Legg til kategori</h2>
-					</div>
-				<form id="add-kategori-form">
-					<label class="form-field name-field">
-						<span>Navn</span>
-						<input name="name" type="text" placeholder="F.eks. Elektronikk" required="">
-					</label>
-					<button class="submit-button" type="submit">Legg til kategori</button>
-				</form>
-			</section>
+{% extends "base.html" %} {% block title %}Legg til kategori – {% endblock %} {%
+block content %}
+<section class="add-section" aria-labelledby="add-title">
+  <div>
+    <p class="eyebrow">NY REGISTRERING</p>
+    <h2 id="add-title">Legg til kategori</h2>
+  </div>
+  <form id="add-kategori-form">
+    <label class="form-field name-field">
+      <span>Navn</span>
+      <input
+        name="name"
+        type="text"
+        placeholder="F.eks. Elektronikk"
+        required=""
+      />
+    </label>
+    <button class="submit-button" type="submit">Legg til kategori</button>
+  </form>
+</section>
 {% endblock %}
