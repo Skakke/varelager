@@ -8,7 +8,6 @@
   --green: #285f46;
   --green-dark: #1c4935;
   --lime: #dce986;
-  --amber: #9d6311;
   --red: #a64035;
   font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
   color: var(--ink);
@@ -215,7 +214,6 @@ h2 {
   color: #fff;
   font-size: 12px;
   white-space: nowrap;
-
 }
 #list-search-form {
   display: grid;
@@ -257,7 +255,6 @@ h2 {
   }
   #add-kategori-form .submit-button {
     grid-column: 2;
-  }
   }
   .add-section {
     grid-template-columns: 1fr;
