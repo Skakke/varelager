@@ -5,32 +5,25 @@ import sqlite3
 # Database filnavn.
 DB_FILE = "database.db"
 
-# Åpner en tilkobling med fremmednøkler slått på (SQLite har dem av som standard).
-def koble_til():
-    conn = sqlite3.connect(DB_FILE)
-    conn.execute("PRAGMA foreign_keys = ON")
-    return conn
-
 # Lager nødvendige tabeller i databasen.
 def create_tables():
     # Oppretter en tilkobling til SQLite-databasen.
-    conn = koble_til()
+    conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
-    # kategorier må lages før varer, siden varer peker på den.
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS kategorier (
-        id INTEGER PRIMARY KEY,
-        navn TEXT NOT NULL UNIQUE
-    )
-    """)
-
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS varer (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         varenavn TEXT NOT NULL,
         antall_paa_lager INTEGER NOT NULL,
-        kategori TEXT REFERENCES kategorier(navn),
+        kategori INT,
         kort_beskrivelse TEXT 
+    )
+    """)
+    
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS kategorier (
+        id INTEGER PRIMARY KEY,
+        navn TEXT NOT NULL
     )
     """)
     conn.commit()
@@ -39,7 +32,7 @@ def create_tables():
 # Legger til kategorier i databasen, kjøres fra et setupvindu eller lignende.
 def legg_til_ny_kategori(navn):
     # Oppretter en tilkobling til SQLite-databasen.
-    conn = koble_til()
+    conn = sqlite3.connect(DB_FILE)
     try:
         cursor = conn.cursor()
         cursor.execute("""
@@ -53,7 +46,7 @@ def legg_til_ny_kategori(navn):
     
 
 def legg_til_ny_vare(navn, kategori, antall_paa_lager, kort_beskrivelse):
-    conn = koble_til()
+    conn = sqlite3.connect(DB_FILE)
     try:
         cursor = conn.execute("""
             INSERT INTO varer (
@@ -68,7 +61,7 @@ def legg_til_ny_vare(navn, kategori, antall_paa_lager, kort_beskrivelse):
 
 # Oppdaterer en eksisterende vare. Returnerer False hvis varen ikke finnes.
 def oppdater_vare(vare_id, navn, kategori, antall_paa_lager, kort_beskrivelse):
-    conn = koble_til()
+    conn = sqlite3.connect(DB_FILE)
     try:
         cursor = conn.execute("""
             UPDATE varer
@@ -84,7 +77,7 @@ def oppdater_vare(vare_id, navn, kategori, antall_paa_lager, kort_beskrivelse):
 # Søker etter varer der varenummeret (id) er lik søkeordet, eller navnet inneholder det.
 # Tomt søkeord gir alle varer.
 def sok_varer(sokeord):
-    conn = koble_til()
+    conn = sqlite3.connect(DB_FILE)
     conn.row_factory = sqlite3.Row
     try:
         rows = conn.execute("""
@@ -99,7 +92,7 @@ def sok_varer(sokeord):
 
     # Henter alle kategorier, sortert på navn.
 def hent_kategorier():
-    conn = koble_til()
+    conn = sqlite3.connect(DB_FILE)
     conn.row_factory = sqlite3.Row
     try:
         rows = conn.execute("SELECT id, navn FROM kategorier ORDER BY navn").fetchall()
@@ -108,7 +101,7 @@ def hent_kategorier():
         conn.close()
 
 def slett_vare(id):
-    conn = koble_til()
+    conn = sqlite3.connect(DB_FILE)
     try:
         cursor = conn.execute("DELETE FROM varer WHERE id = ?", [id])
         conn.commit()
