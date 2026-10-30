@@ -91,6 +91,11 @@ def add_vare(vare: Vare):
             vare.antall_paa_lager,
             vare.kort_beskrivelse,
         )
+    except sqlite3.IntegrityError as error:
+        raise HTTPException(
+            status_code=400,
+            detail="Kategorien finnes ikke.",
+        ) from error
     except sqlite3.Error as error:
         raise HTTPException(
             status_code=500,
@@ -153,6 +158,11 @@ def update_vare(vare_id: int, vare: Vare):
             vare.antall_paa_lager,
             vare.kort_beskrivelse,
         )
+    except sqlite3.IntegrityError as error:
+        raise HTTPException(
+            status_code=400,
+            detail="Kategorien finnes ikke.",
+        ) from error
     except sqlite3.Error as error:
         raise HTTPException(
             status_code=500,
